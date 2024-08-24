@@ -1,7 +1,10 @@
-Starting with project structure for the backend 
+# Rezio Backend Project
 
+This repository contains the backend for the Rezio project. Below you'll find an overview of the project structure and a Mermaid diagram to visualize the architecture.
 
+## Project Structure
 
+```plaintext
 pythonProject/
 ├── .venv/
 ├── rezio-backend/
@@ -151,10 +154,9 @@ pythonProject/
 │   │   │   ├── decorators.py
 │   │   │   ├── error_utils.py
 │   │   │   ├── exception_handler.py
-│   │   │   ├── paginators.py
-│   │   │   ├── text_choices.py
-│   │   │   └── validation_utils.py
-│   │   ├── manage.py
+│   │   │   ├── message_utils.py
+│   │   │   └── validator_utils.py
+│   ├── scripts/
 │   ├── static/
 │   ├── .dockerignore
 │   ├── .gitignore
@@ -165,3 +167,68 @@ pythonProject/
 │   ├── README.md
 │   ├── requirements.txt
 │   └── sample_env
+
+ ```                        
+
+## Architecture Overview
+
+```mermaid
+graph TD;
+    A[User] -->|Request| B[Frontend];
+    B -->|API Call| C[Backend];
+    C -->|Database Query| D[(Database)];
+    C -->|Cache| E[(Redis)];
+    C -->|External Service| F[Third-Party APIs];
+    F -->|Response| C;
+    D -->|Data| C;
+    E -->|Data| C;
+    C -->|Response| B;
+    B -->|Render| A;
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.8+
+- Docker
+- Docker Compose
+
+### Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/rezio-backend.git
+    cd rezio-backend
+    ```
+
+2. Create and activate a virtual environment:
+    ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+
+3. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Set up your environment variables:
+    ```bash
+    cp sample_env .env
+    ```
+
+5. Run the application:
+    ```bash
+    docker-compose -f local.yml up --build
+    ```
+
+### Usage
+
+- Access the API at `http://localhost:8000`
+- View the admin panel at `http://localhost:8000/admin`
+
+
+
+
+
