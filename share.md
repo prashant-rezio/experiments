@@ -29,19 +29,19 @@ This document explains the process for implementing dynamic, non-expiring shared
 
 ```mermaid
 graph TD
-    A[User Shares Profile/Portfolio] --> B[Backend Generates Secure Link (UUID/JWT)]
-    B --> C[Link Shared via Email or Messaging]
-    C --> D[User Clicks Link]
-    D --> E[Firebase Dynamic Links Handles App or Web Redirection]
-    E --> F[Backend Validates Token (UUID/JWT)]
-    F --> G[Django Fetches Latest Profile/Portfolio Data]
-    G --> H[Public Read-Only Profile/Portfolio Displayed]
-    H --> I[Profile Updates Automatically Reflected]
+    A(User Shares Profile/Portfolio) --> B(Backend Generates Secure Link UUID/JWT)
+    B --> C(Link Shared via Email or Messaging)
+    C --> D(User Clicks Link)
+    D --> E(Firebase Dynamic Links Handles App or Web Redirection)
+    E --> F(Backend Validates Token UUID/JWT)
+    F --> G(Django Fetches Latest Profile/Portfolio Data)
+    G --> H(Public Read-Only Profile/Portfolio Displayed)
+    H --> I(Profile Updates Automatically Reflected)
     
     %% Security measures
-    F --> J[Token Validation]
-    F --> K[Rate Limiting and DDoS Protection]
-    F --> L[HTTPS Encryption]
+    F --> J(Token Validation)
+    F --> K(Rate Limiting and DDoS Protection)
+    F --> L(HTTPS Encryption)
 
     %% Optional link revocation
-    I --> M[User Revokes Link (Optional)]
+    I --> M(User Revokes Link Optional)
